@@ -26,8 +26,8 @@
         @csrf
 
         <div class="form-group mb-3">
-            <label for="name">Nom:</label>
-            <input type="text" class="form-control" id="nom" placeholder="Entrez un nom" name=" nom">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" id="nom" placeholder="Entrez un nom" name="nom">
         </div>
 
         <div class="form-group mb-3">
@@ -40,7 +40,7 @@
         <div class="form-group mb-3">
 
             <label for="telephone">Telephone:</label>
-            <input type="text" class="form-control" id="telephone" placeholder="telphone" name="telephone">
+            <input type="phone" pattern="[0-9]{10}" title="veuiller entrez des chiffres(10)" class="form-control" id="telephone" placeholder="telphone" name="telephone">
 
         </div>
 

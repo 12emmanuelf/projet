@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Zone;
 use App\Models\Coursier;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class CoursierController extends Controller
             'numero_telephone' => 'required',
             'numero_permis_conduire' => 'required',
             'salaire' => 'required',
-            'nationalite' => 'required',
+            'cni' => 'required',
             'type_vehicule' => 'required',
             'photo' => 'required',
             'email' => 'required',
@@ -55,11 +56,12 @@ class CoursierController extends Controller
             'numero_telephone' => $request->get('numero_telephone'),
             'numero_permis_conduire' => $request->get('numero_permis_conduire'),
             'salaire' => $request->get('salaire'),
-            'nationalite' => $request->get('nationalite'),
+            'cni' => $request->get('cni'),
             'type_vehicule' => $request->get('type_vehicule'),
             'photo' => $request->get('photo'),
             'email' => $request->get('email'),
             'plaque_immatriculation' => $request->get('plaque_immatriculation'),
+
 
         ]);
 
@@ -107,11 +109,12 @@ class CoursierController extends Controller
             'numero_telephone' => 'required',
             'numero_permis_conduire' => 'required',
             'salaire' => 'required',
-            'nationalite' => 'required',
+            'cni' => 'required',
             'type_vehicule' => 'required',
             'photo' => 'required',
             'email' => 'required',
             'plaque_immatriculation' => 'required',
+
         ]);
 
         $coursier = coursier ::findOrFail($id);
@@ -120,13 +123,12 @@ class CoursierController extends Controller
         $coursier ->numero_telephone = $request->get('numero_telephone');
         $coursier ->numero_permis_conduire = $request->get('numero_permis_conduire');
         $coursier ->salaire = $request->get('salaire');
-        $coursier ->nationalite = $request->get('nationalite');
+        $coursier ->cni = $request->get('cni');
         $coursier ->type_vehicule = $request->get('type_vehicule');
         $coursier ->photo = $request->get('photo');
         $coursier ->email = $request->get('email');
         $coursier ->plaque_immatriculation = $request->get('plaque_immatriculation');
-
-    $coursier->update();
+      $coursier->update();
 
     return redirect('/coursier.index')->with('success', 'Coursier modifié avec succès');
     }

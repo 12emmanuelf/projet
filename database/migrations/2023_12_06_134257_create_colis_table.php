@@ -23,9 +23,11 @@ return new class extends Migration
             $table->string('poids');
             $table->string('reference');
             $table->string('expediteur');
-            $table->unsignedBigInteger('natures_id')->default(1);
+            $table->foreignId('natures_id')->constrained()->default(1);
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

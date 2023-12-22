@@ -5,7 +5,7 @@
 
 
 
-    <h1>Modifier Client</h1>
+    <h1>Modifier Coursier</h1>
 
 
     @if ($errors->any())

@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="img/logo/logo.png" rel="icon">
+  <link href="{{ asset('img/logo/logo.png')}}" rel="icon">
   <title>RuangAdmin - Dashboard</title>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/ruang-admin.min.css" rel="stylesheet">
+  <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/ruang-admin.min.css')}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -28,13 +28,6 @@
 
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-              </ol>
-            </div>
 
             <div>
                     <div class="row">
@@ -53,13 +46,17 @@
 
 
 
-                    @if ($message = Session::get('success'))
+             @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                    <script>
+                        setTimeout(function(){
+                            window.location.href = '{{ url('/coursier.index') }}';
+                        }, {{ session('delay', 3) * 1000 }});
+                    </script>
+                </div>
+            @endif
 
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-
-                    @endif
 
 
                     <div class="table-responsive">
@@ -76,7 +73,7 @@
                             <th>Numero_Permis_Conduire</th>
                             <th>Salaire</th>
                             <th>Statut</th>
-                            <th>Nationalite</th>
+                            <th>CNI</th>
                             <th>Type_Vehicule</th>
                             <th>Photo </th>
                             <th>Email</th>
@@ -96,7 +93,7 @@
                                 <td>{{ $coursier->numero_permis_conduire}}</td>
                                 <td>{{ $coursier->salaire}}</td>
                                 <td>{{ $coursier->statut }}</td>
-                                <td>{{ $coursier->nationalite }}</td>
+                                <td>{{ $coursier->cni }}</td>
                                 <td>{{ $coursier->type_vehicule }}</td>
                                 <td>{{ $coursier->photo }}</td>
                                 <td>{{ $coursier->email}}</td>
@@ -107,10 +104,17 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        <a class="btn btn-info" href="{{ url('coursier/'. $coursier->id) }}">Voir</a>
-                                        <a class="btn btn-primary" href="{{ url('coursier/'. $coursier->id .'/edit') }}">Modifier</a>
+                                        <a class="btn btn-info btn-sm" href="{{ url('coursier/'. $coursier->id) }}">
+                                                Voir
+                                        </a>
 
-                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        <a class="btn btn-primary btn-sm" href="{{ url('coursier/'. $coursier->id .'/edit') }}">
+                                            Modifier
+                                        </a>
+
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Supprimer
+                                        </button>
 
                                     </form>
 

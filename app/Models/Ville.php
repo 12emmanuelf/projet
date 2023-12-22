@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ville extends Model
 {
     use HasFactory;
-    protected $guarded=['id'];
+    protected $fillable = [
+        'nom',
+    ];
+
     public function Commune()
     {
         return $this->hasmany(Commune::class);

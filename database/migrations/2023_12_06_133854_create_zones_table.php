@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clientsimples', function (Blueprint $table) {
+        Schema::create('zones', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nom');
+            $table->string('group');
+            $table->foreignId('ville_id')->constrained();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -26,6 +30,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientsimples');
+        Schema::table('zones', function (Blueprint $table) {
+            $table->foreignId('ville_id');
+
+        });
+        Schema::dropIfExists('zones');
     }
 };

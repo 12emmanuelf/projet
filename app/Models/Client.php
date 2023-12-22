@@ -26,8 +26,8 @@ class Client extends Model
         return $this->hasMany(Dossier::class);
     }
 
-    public function souscriptions()
+    public function Commune()
     {
-        return $this->hasMany(Souscription::class);
+        return $this->hasMany(Commune::class);
     }
 }

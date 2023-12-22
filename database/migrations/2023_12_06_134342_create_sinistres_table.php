@@ -19,9 +19,11 @@ return new class extends Migration
             $table->date('date_accident');
             $table->string('lieu');
             $table->string('statut');
-            $table->unsignedBigInteger('sinistres_id');
+            $table->foreignId('sinistres_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

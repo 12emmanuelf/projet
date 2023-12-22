@@ -18,9 +18,11 @@ return new class extends Migration
             $table->char('montant_total');
             $table->string('statut');
             $table->date('date');
-            $table->unsignedBigInteger('dossiers_id');
+            $table->foreignId('dossiers_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -18,10 +18,13 @@ return new class extends Migration
             $table->char('montant_total');
             $table->string('statut');
             $table->date('date');
-            $table->unsignedBigInteger('coursiers_id');
-            $table->unsignedBigInteger('livraison_id');
+            $table->foreignId('coursiers_id')->constrained();
+            $table->foreignId('livraison_id')->constrained();
             $table->timestamps();
+
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

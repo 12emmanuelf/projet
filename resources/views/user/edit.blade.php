@@ -30,14 +30,14 @@
         <div class="form-group mb-3">
 
             <label for="nom">Nom:</label>
-            <input type="text" class="form-control" id="nom" placeholder="Entrer Nom" name="nomComplet" value="{{ $user->nom }}">
+            <input type="text" class="form-control" id="nom" placeholder="Entrer Nom" name="nom" value="{{ $user->nom}}">
 
         </div>
 
         <div class="form-group mb-3">
 
             <label for="prenom">Prenom:</label>
-            <input type="text" class="form-control" id="prenom" placeholder="Entrer une prenom" name="Prenom" value="{{ $user->prenom }}">
+            <input type="text" class="form-control" id="prenom" placeholder="Entrer une prenom" name="Prenom" value="{{ $user->prenom}}">
 
         </div>
 
@@ -45,14 +45,14 @@
         <div class="form-group mb-3">
 
             <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email" placeholder="Entrer Email" name="email" value="{{ $user->email }}">
+            <input type="text" class="form-control" id="email" placeholder="Entrer Email" name="email" value="{{ $user->email}}">
 
         </div>
 
         <div class="form-group mb-3">
 
             <label for="email">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="password" name="password" value="{{ $user->password }}">
+            <input type="password" class="form-control" id="password" placeholder="password" name="password" value="{{ $user->password}}">
 
         </div>
 

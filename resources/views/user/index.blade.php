@@ -80,7 +80,7 @@
 
                             <tr>
                                 <td>{{ $index }}</td>
-                                <td>{{ $user->nom }}</td>
+                                <td>{{ $user->nom}}</td>
                                 <td>{{ $user->prenom}}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->password }}</td>

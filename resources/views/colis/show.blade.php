@@ -1,7 +1,6 @@
 
 
 
-
 @section('content2')
 
     <h1>Gestion des Clients</h1>

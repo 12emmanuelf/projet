@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->unsignedBigInteger('clients_id');
+            $table->foreignId('clients_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
+
 
     /**
      * Reverse the migrations.

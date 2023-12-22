@@ -19,9 +19,11 @@ return new class extends Migration
             $table->char('numero');
             $table->char('quantite');
             $table->string('statut');
-            $table->unsignedBigInteger('facture_id');
+            $table->foreignId('facture_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

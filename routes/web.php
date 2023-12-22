@@ -31,7 +31,7 @@ Route::get('/abonnemment',[AbonnementController::class,'index'])->name('abonn');
 
 Route::controller(ClientController::class)->group(function () {
 
-    Route::get('/client.index', 'index');
+    Route::get('/client.index','index');
     Route::get('/client/create', 'create');
     Route::get('/client/{id}', 'show');
     Route::get('/client/{id}/edit', 'edit');
@@ -47,7 +47,7 @@ Route::controller(ClientController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
 
-    Route::get('/user.index', 'index');
+    Route::get('/user.index', 'index')->name('utilisateurp');
     Route::get('/user/create', 'create');
     Route::get('/user/{id}', 'show');
     Route::get('/user/{id}/edit', 'edit');

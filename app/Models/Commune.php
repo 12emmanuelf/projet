@@ -10,13 +10,13 @@ class Commune extends Model
 {
     use HasFactory;
     protected $guarded=['id'];
-
-    public function Ville()
-    {
-        return $this->belongsTo(Ville::class);
-    }
     public function Zone()
     {
         return $this->hasMany(Zone::class);
+    }
+
+    public function Client()
+    {
+        return $this->belongsTo(Ville::class);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Commune;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -14,8 +14,10 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $communes = Commune::all();
         $clients = Client::all();
-        return view('client.index', compact('clients'));
+        return view('client.index', compact('clients', 'communes'));
+
     }
 
     /**
@@ -25,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        return view('client.create', compact('clients','communes'));
     }
 
     /**
@@ -41,7 +43,13 @@ class ClientController extends Controller
             'prenom'=>'required',
             'telephone'=> 'required',
             'email' => 'required',
+            'commune' => 'required',
         ]);
+        $commune = Commune::where('nom', $request->get('commune'))->first();
+        if (!$commune) {
+            $commune = new Commune(['nom' => $request->get('commune')]);
+            $commune->save();
+        }
 
 
         $client = new client([
@@ -49,6 +57,7 @@ class ClientController extends Controller
             'prenom' => $request->get('prenom'),
             'telephone' => $request->get('telephone'),
             'email' => $request->get('email'),
+            'commune_id' => $commune->id,
         ]);
         $client->save();
 
@@ -65,7 +74,8 @@ class ClientController extends Controller
     {
 
             $client = client::findOrFail($id);
-            return view('client.show', compact('client'));
+            $communes = Commune::all();
+            return view('client.edit', compact('client', 'communes'));
     }
 
     /**
@@ -77,8 +87,8 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client = client::findOrFail($id);
-
-        return view('client.edit', compact('client'));
+        $commune = Commune::all();
+        return view('client.edit', compact('client', 'zones'));
     }
     /**
      * Update the specified resource in storage.
@@ -96,13 +106,15 @@ class ClientController extends Controller
                 'prenom'=> 'required',
                 'telephone' => 'required',
                 'email'=> 'required',
+                'commune_id' => 'required'
             ]);
 
             $client = client::findOrFail($id);
             $client->nom = $request->get('nom');
-            $client->prenom = $request->get('prenom ');
+            $client->prenom = $request->get('prenom');
             $client->telephone = $request->get('telephone');
             $client->email = $request->get('email');
+            $client->commune_id = $request->get('commune_id');
 
 
             $client->update();

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('telephone');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            // $table->unsignedBigInteger('zones_id')->nullable();
+            $table->foreignId('commune_id')->constrained();
             $table->timestamps();
 
         });

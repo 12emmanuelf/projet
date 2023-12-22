@@ -22,15 +22,17 @@ return new class extends Migration
             $table->string('numero_permis_conduire')->nullable();
             $table->string('plaque_immatriculation')->nullable();
             $table->decimal('salaire', 10, 2); // Utilisez decimal pour les champs de salaire avec deux chiffres après la virgule
-            $table->enum('type_vehicule', ['vélo', 'moto', 'voiture', 'autre'])->default('autre');
-            $table->string('nationalite');
+            $table->enum('type_vehicule', ['vélo', 'moto', 'voiture', 'autre']);
+            $table->string('cni');
             $table->string('photo')->nullable();
-            $table->enum('statut', [ 'actif', 'inactif'])->default('inactif');
+            $table->enum('statut', [ 'actif', 'inactif']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('zones_id')->default(1);
+            $table->foreignId('zones_id')->constrained()->default(1);
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

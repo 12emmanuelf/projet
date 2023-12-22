@@ -11,7 +11,7 @@ class Coursier extends Model
     protected $fillable = [
         'nom', 'prenom', 'email', 'numero_telephone', 'numero_permis_conduire',
         'type_vehicule', 'plaque_immatriculation', 'statut',
-        'date_embauche', 'salaire','nationalite', 'photo',
+        'date_embauche', 'salaire','cni', 'photo','zones_id',
     ];
 
     public function Zone()

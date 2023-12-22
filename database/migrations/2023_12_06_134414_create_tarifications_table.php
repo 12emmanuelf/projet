@@ -18,9 +18,11 @@ return new class extends Migration
             $table->decimal('prix');
             $table->string('date debut validite');
             $table->string('date fin');
-            $table->unsignedBigInteger('dossiers_id');
+            $table->foreignId('dossiers_id')->constrained();
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -19,9 +19,11 @@ return new class extends Migration
             $table->char('numero');
             $table->char('quantite');
             $table->string('statut');
-            $table->unsignedBigInteger('colis_id');
+            $table->foreignId('colis_id')->constrained()->default(1);
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

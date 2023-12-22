@@ -9,7 +9,7 @@ class Zone extends Model
 {
     use HasFactory;
 
-    protected $guarded=['id'];
+    protected $fillable = ['nom', 'groupe'];
     public function Commune()
     {
         return $this->belongsTo(Commune::class);

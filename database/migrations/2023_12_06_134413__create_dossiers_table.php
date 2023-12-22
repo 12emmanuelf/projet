@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('dossiers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained();
-            $table->foreignId('abonnement_id')->constrained();
             $table->timestamps();
         });
     }
